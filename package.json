@@ -1,0 +1,20 @@
+{
+  "name": "codex",
+  "version": "1.0.0",
+  "author": "Alec Marcus <alec@alecmarc.us>",
+  "private": true,
+  "workspaces": [
+    "web",
+    "cms"
+  ],
+  "scripts": {
+    "start": "yarn workspace cms start & yarn workspace web start",
+    "start:web": "yarn workspace web start",
+    "start:cms": "yarn workspace cms start",
+    "build": "yarn workspace cms build & yarn workspace web build",
+    "build:web": "yarn workspace web build",
+    "build:cms": "yarn workspace cms build",
+    "web:serve": "yarn workspace web preview",
+    "cms:deploy": "yarn workspace cms deploy"
+  }
+}
