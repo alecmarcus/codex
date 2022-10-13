@@ -1,9 +1,11 @@
 ---
-import { getHomePage } from "src/api/homePage";
 import HTMLShell from "../layouts/HTMLShell.astro";
 import PortableText from "@components/PortableText.astro";
+import { getBasicPages } from "src/api/basicPage";
 
-const { pageTitle, pageDescription, pageImage, content } = await getHomePage();
+export const getStaticPaths = getBasicPages;
+
+const { pageTitle, pageDescription, pageImage, content } = Astro.props;
 ---
 
 <HTMLShell
@@ -11,7 +13,7 @@ const { pageTitle, pageDescription, pageImage, content } = await getHomePage();
   pageDescription={pageDescription}
   pageImage={pageImage}
 >
-  <main id="root">
+  <main>
     <h1>{pageTitle}</h1>
     <PortableText content={content} />
   </main>

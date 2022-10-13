@@ -1,0 +1,31 @@
+---
+import { imageURL } from "src/sanity/imageURL";
+import { toHTML } from "@portabletext/to-html";
+import type { SanityImageSource } from "@sanity/asset-utils";
+
+const components = {
+  types: {
+    image: ({ value }: { value: { asset: SanityImageSource } }) => {
+      return `
+        <picture>
+          <source
+            srcset="${imageURL(value.asset).fullRes}"
+            type="image/webp"
+          />
+          <img
+            src="${imageURL(value.asset).fullRes}"
+          />
+        </picture>
+      `;
+    },
+  },
+};
+
+const { content } = Astro.props;
+
+export interface Props {
+  content: any;
+}
+---
+
+<Fragment set:html={toHTML(content, { components })} />

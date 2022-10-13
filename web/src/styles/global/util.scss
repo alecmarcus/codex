@@ -1,0 +1,227 @@
+/*
+ * Static variable assignments.
+ *
+ * These values should not be changed, only referenced.
+ */
+
+:root {
+  --true-black: black;
+  --true-white: white;
+  --text-white: #c3c0bb;
+  --text-black: #16181d;
+
+  --beige: #e3ded3;
+  --beige-gray-dark: #5f5b54;
+  --beige-gray-light: #b9b5ac;
+
+  --navy: #000e2e;
+  --navy-gray-dark: #525660;
+  --navy-gray-light: #9ca0ab;
+
+  --media-xxs: #{strip-unit($media-xxs)};
+  --media-xs: #{strip-unit($media-xs)};
+  --media-sm: #{strip-unit($media-sm)};
+  --media-md: #{strip-unit($media-md)};
+  --media-lg: #{strip-unit($media-lg)};
+  --media-xl: #{strip-unit($media-xl)};
+
+  --ff-sans: "Roobert";
+  --ff-serif: "Signifier";
+
+  --fs-0: 13px;
+  --fs-1: 16px;
+  --fs-2: 18px;
+  --fs-3: 24px;
+  --fs-4: 30px;
+  --fs-5: 54px;
+
+  --fw-1: 100;
+  --fw-2: 200;
+  --fw-3: 300;
+  --fw-4: 400;
+  --fw-5: 500;
+  --fw-6: 600;
+  --fw-7: 700;
+
+  --lh-1: 1.03;
+  --lh-2: 1.3;
+  --lh-3: 1.4;
+
+  --site-margin: clamp(20px, calc(18vw / (var(--media-xs) / 100)), 64px);
+  --section-space: clamp(150px, calc(120vw / (var(--media-xs) / 100)), 200px);
+
+  --expo-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --expo-in: cubic-bezier(0.7, 0, 0.84, 0);
+  --expo-in-out: cubic-bezier(0.87, 0, 0.13, 1);
+  --dur-01: 100ms;
+  --dur-02: 200ms;
+  --dur-03: 300ms;
+  --dur-04: 400ms;
+  --dur-05: 500ms;
+  --dur-75: 750ms;
+  --dur-10: 1s;
+  --t-to: var(--dur-03) var(--expo-out);
+  --t-from: var(--dur-03) var(--expo-in);
+}
+
+@media (min-width: $media-xxs) {
+  :root {
+    --fs-1: clamp(12px, calc(14vw / (var(--media-xxs) / 100)), 15px);
+    --fs-2: clamp(14px, calc(14vw / (var(--media-xxs) / 100)), 17px);
+    --fs-3: clamp(22px, calc(20vw / (var(--media-xxs) / 100)), 24px);
+    --fs-4: clamp(28px, calc(28vw / (var(--media-xxs) / 100)), 56px);
+    --fs-5: clamp(
+      54px,
+      calc(54vw / (var(--media-xxs) / 100)),
+      calc(80px + 4vmax)
+    );
+  }
+}
+
+/*
+ * Dynamic property assignments
+ *
+ * Top-down structure. These properties can be changed
+ * anytime to alter their children.
+ */
+
+body {
+  --ff: var(--ff-sans);
+  --fs: var(--fs-2);
+  --fw: var(--fw-4);
+  --lh: var(--lh-2);
+}
+
+.sans {
+  --ff: var(--ff-sans);
+  --fw: var(--fw-4);
+}
+
+.serif {
+  --ff: var(--ff-serif);
+  --fw: var(--fw-1);
+}
+
+@mixin navy {
+  --back: var(--navy);
+  --disabled: var(--navy-gray-light);
+  --secondary: var(--navy-gray-dark);
+  --text: var(--text-white);
+  color-scheme: dark;
+}
+
+@mixin navy-inverted {
+  --back: var(--text-white);
+  --disabled: var(--navy-gray-dark);
+  --secondary: var(--navy-gray-light);
+  --text: var(--navy);
+  color-scheme: light;
+}
+
+@mixin beige {
+  --back: var(--beige);
+  --disabled: var(--beige-gray-light);
+  --secondary: var(--beige-gray-dark);
+  --text: var(--text-black);
+  color-scheme: light;
+}
+
+@mixin beige-inverted {
+  --back: var(--text-black);
+  --disabled: var(--beige-gray-dark);
+  --secondary: var(--beige-gray-light);
+  --text: var(--beige);
+  color-scheme: dark;
+}
+
+@media (prefers-color-scheme: light) {
+  .beige {
+    @include beige;
+
+    &.inverted,
+    .inverted {
+      @include beige-inverted;
+    }
+  }
+
+  .navy {
+    @include navy;
+
+    &.inverted,
+    .inverted {
+      @include navy-inverted;
+    }
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .beige {
+    @include beige-inverted;
+
+    &.inverted,
+    .inverted {
+      @include beige;
+    }
+  }
+
+  .navy {
+    @include navy-inverted;
+
+    &.inverted,
+    .inverted {
+      @include navy;
+    }
+  }
+}
+
+/*
+ * Dynamic variable applications
+ *
+ * These selectors "capture" dynamic property assignments.
+ * Use as low in the tree/cascade as possible.
+ */
+
+.bg {
+  background-color: var(--back);
+}
+
+@include text {
+  color: var(--text);
+  font-family: var(--ff);
+  font-size: var(--fs);
+  font-weight: var(--fw);
+  line-height: var(--lh);
+
+  &::selection {
+    color: var(--back);
+    background: var(--text);
+  }
+}
+
+/*
+ * Utility classes
+ */
+
+.section {
+  margin: var(--section-space) var(--site-margin);
+}
+
+// Screen reader only -- for hiding things accessibly. https://gist.github.com/ffoodd/000b59f431e3e64e4ce1a24d5bb36034
+.sr-only {
+  border: 0 !important;
+  clip: rect(1px, 1px, 1px, 1px) !important;
+  -webkit-clip-path: inset(50%) !important;
+  clip-path: inset(50%) !important;
+  height: 1px !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  position: absolute !important;
+  width: 1px !important;
+  white-space: nowrap !important;
+}
+
+// For the focus-visible polyfill. Hides outlines on elements that got focus via mouse interaction.
+.js-focus-visible :focus:not(.focus-visible) {
+  outline: none;
+}

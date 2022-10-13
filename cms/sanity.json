@@ -11,19 +11,46 @@
     "@sanity/base",
     "@sanity/default-layout",
     "@sanity/default-login",
-    "@sanity/desk-tool"
+    "@sanity/desk-tool",
+    "@sanity/scheduled-publishing",
+    "asset-source-unsplash"
   ],
   "env": {
     "development": {
-      "plugins": [
-        "@sanity/vision"
-      ]
+      "plugins": ["@sanity/vision"]
     }
   },
+  "__experimental_spaces": [
+    {
+      "name": "production",
+      "title": "Production",
+      "api": {
+        "projectId": "26p2c0pc",
+        "dataset": "production"
+      }
+    },
+    {
+      "name": "staging",
+      "title": "Staging",
+      "default": true,
+      "api": {
+        "projectId": "26p2c0pc",
+        "dataset": "staging"
+      }
+    }
+  ],
   "parts": [
     {
       "name": "part:@sanity/base/schema",
-      "path": "./schemas/schema"
+      "path": "./schema"
+    },
+    {
+      "implements": "part:@sanity/base/document-actions/resolver",
+      "path": "./parts/resolveDocumentActions.ts"
+    },
+    {
+      "name": "part:@sanity/desk-tool/structure",
+      "path": "./parts/deskStructure.ts"
     }
   ]
 }

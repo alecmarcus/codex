@@ -4,8 +4,8 @@
   "author": "Alec Marcus <alec@alecmarc.us>",
   "private": true,
   "workspaces": [
-    "web",
-    "cms"
+    "cms",
+    "web"
   ],
   "scripts": {
     "start": "yarn workspace cms start & yarn workspace web start",
@@ -16,5 +16,12 @@
     "build:cms": "yarn workspace cms build",
     "web:serve": "yarn workspace web preview",
     "cms:deploy": "yarn workspace cms deploy"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.40.0",
+    "@typescript-eslint/parser": "^5.40.0",
+    "eslint": "^8.25.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1"
   }
 }
