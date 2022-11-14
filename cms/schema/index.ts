@@ -4,7 +4,7 @@ import schemaTypes from "all:part:@sanity/base/schema-type";
 import { basicPage } from "./basicPage";
 import { blockEditor } from "./blockEditor";
 import { siteSettings } from "./siteSettings";
-// import { keyword } from "./keyword";
+import { taxonomy } from "./taxonomy";
 import { home } from "./home";
 import { navItem } from "./siteSettings/navItem";
 
@@ -14,7 +14,7 @@ export default createSchema({
     basicPage,
     blockEditor,
     home,
-    // keyword,
+    taxonomy,
     navItem,
     siteSettings,
   ]),

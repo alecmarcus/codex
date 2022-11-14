@@ -78,8 +78,19 @@ const image = imageURL(pageImage || siteImage)
       </p>
     </noscript>
     <SVGs />
-    <nav>
-      <ul>
+    <!-- <nav class="header-wrapper">
+      <ul class="header-content">
+        <li class="header-item header-item-logo">
+          <a href="https://uconn.edu" class="header-link">
+            <span class="sr-only">UConn Home</span>
+            <svg viewBox="0 0 864 85" height="24" class="header-logo-lg">
+              <use href="#wordmark-lg-svg"></use>
+            </svg>
+            <svg viewBox="0 0 87 18" height="18" class="header-logo-sm">
+              <use href="#wordmark-sm-svg"></use>
+            </svg>
+          </a>
+        </li>
         {
           navigation.map(({ title, to, children }) => (
             <li>
@@ -97,7 +108,7 @@ const image = imageURL(pageImage || siteImage)
           ))
         }
       </ul>
-    </nav>
+    </nav> -->
     <slot />
   </body>
 </html>

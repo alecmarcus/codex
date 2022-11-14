@@ -1,10 +1,11 @@
-import { FiTag } from "react-icons/fi";
+import { FiLayers } from "react-icons/fi";
 
-export const keyword = {
-  icon: FiTag,
-  name: "keyword",
-  title: "Keyword",
+export const taxonomy = {
+  icon: FiLayers,
+  name: "taxonomy",
+  title: "Taxonomy",
   type: "document",
+  description: "test",
   fields: [
     {
       name: "title",
@@ -25,7 +26,7 @@ export const keyword = {
       title: "title",
     },
     prepare: ({ title }) => ({
-      media: FiTag,
+      media: FiLayers,
       title: title,
     }),
   },

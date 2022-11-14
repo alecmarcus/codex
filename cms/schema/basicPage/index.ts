@@ -96,6 +96,13 @@ export const basicPage = {
     },
     {
       group: "navigation",
+      name: "taxonomy",
+      to: [{ type: "taxonomy" }],
+      title: "Parent category",
+      type: "reference",
+    },
+    {
+      group: "navigation",
       name: "children",
       of: [{ type: "navItem" }],
       title: "Child pages",
@@ -110,16 +117,23 @@ export const basicPage = {
     select: {
       title: "pageTitle",
       media: "pageImage",
+      taxonomy: "taxonomy.title",
       tag0: "tags.0",
       tag1: "tags.1",
     },
-    prepare: ({ title, media, tag0, tag1 }) => {
+    prepare: ({ title, media, taxonomy, tag0, tag1 }) => {
+      const readableTags = capitalize(
+        [tag0, tag1].filter(tag => tag).join(", "),
+      );
+
+      const joiner = taxonomy && readableTags ? " • " : "";
+
+      const subtitle = `${taxonomy ?? ""}${joiner}${readableTags}`;
+
       return {
         title,
         media,
-        subtitle: [capitalize(tag0), capitalize(tag1)]
-          .filter(tag => tag)
-          .join(", "),
+        subtitle,
       };
     },
   },

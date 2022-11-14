@@ -2,6 +2,7 @@
 import { getHomePage } from "src/api/homePage";
 import HTMLShell from "../layouts/HTMLShell.astro";
 import PortableText from "@components/PortableText.astro";
+import MicroSite from "@components/MicroSite.astro";
 
 const { pageTitle, pageDescription, pageImage, content } = await getHomePage();
 ---
@@ -12,7 +13,8 @@ const { pageTitle, pageDescription, pageImage, content } = await getHomePage();
   pageImage={pageImage}
 >
   <main id="root">
-    <h1>{pageTitle}</h1>
-    <PortableText content={content} />
+    <MicroSite />
+    <!-- <h1>{pageTitle}</h1> -->
+    <!-- <PortableText content={content} /> -->
   </main>
 </HTMLShell>

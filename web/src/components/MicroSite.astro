@@ -1,0 +1,163 @@
+<div id="root">
+  <header class="header-wrapper">
+    <ul class="header-content">
+      <li class="header-item header-item-logo">
+        <a href="https://uconn.edu" class="header-link">
+          <span class="sr-only">UConn Home</span>
+          <svg viewBox="0 0 864 85" height="24" class="header-logo-lg">
+            <use href="#wordmark-lg-svg"></use>
+          </svg>
+          <svg viewBox="0 0 87 18" height="18" class="header-logo-sm">
+            <use href="#wordmark-sm-svg"></use>
+          </svg>
+        </a>
+      </li>
+      <li class="header-item header-item-search header-item-icon">
+        <a href="https://uconn.edu/search/" class="header-link">
+          <span class="tooltip">Search UConn</span>
+          <svg viewBox="0 0 17 17" height="18">
+            <use href="#search-svg"></use>
+          </svg>
+        </a>
+      </li>
+      <li class="header-item header-item-index header-item-icon">
+        <a href="https://uconn.edu/az-index" class="header-link">
+          <span class="tooltip">UConn A to Z Index</span>
+          <svg viewBox="0 0 32 32" height="22">
+            <use href="#index-svg"></use>
+          </svg>
+        </a>
+      </li>
+    </ul>
+  </header>
+
+  <section class="landing section">
+    <h1 class="hero" id="hero">
+      <span class="hero-phrase hero-phrase-1 serif">
+        <span class="word">Two</span>
+        <span class="word">great</span>
+        <br /><span class="word">organizations,</span>
+      </span>
+      <span class="hero-phrase hero-phrase-2 sans">
+        <span class="word">One</span>
+        <br /><span class="word">world-</span><span class="word">leading</span>
+        <br /><span class="word">institute.</span>
+      </span>
+    </h1>
+    <div class="overview serif">
+      <p>
+        Soon to be launched in Stamford, Connecticut, the DCG Institute at UConn
+        is a first-of-its-kind academic and research institute focused on
+        cutting-edge blockchain/fintech technology and education.
+      </p>
+      <p>
+        The Institute represents a unique partnership between Digital Currency
+        Group (DCG), the epicenter of the cryptocurrency industry, and the
+        University of Connecticut (UConn), the top-ranked public university in
+        New England.
+      </p>
+    </div>
+  </section>
+
+  <section class="form section sans">
+    <h1 class="form-title">Get updates</h1>
+    <div role="form" aria-label="Email signup" class="text" id="user-form">
+      My name is <span
+        data-placeholder="Satoshi"
+        id="name-input"
+        role="textbox"
+        aria-label="Your name"
+        description=""
+        tabindex="0"
+        class="input"
+        contenteditable="true"
+        id="subscribe-name">Satoshi</span
+      >, I&rsquo;m a <span
+        data-placeholder="prospective
+          student"
+        id="about-input"
+        role="textbox"
+        aria-label="Who you are"
+        tabindex="0"
+        class="input"
+        contenteditable="true"
+        id="subscribe-type">prospective student</span
+      >. Keep me updated with emails to
+      <span
+        data-placeholder="toshi@nakamoto.me"
+        id="email-input"
+        role="textbox"
+        aria-label="Your email address"
+        tabindex="0"
+        class="input email"
+        contenteditable="true"
+        id="subscribe-email">toshi@nakamoto.me</span
+      >.
+      <button disabled="true" type="submit" class="submit" id="submit-input">
+        <span>Subscribe me.</span><span>&nbsp;</span><span>&rarr;</span>
+      </button>
+      <span id="form-disabled-tooltip" class="bg theme-inverted"
+        >Please fill out all 3 of the fields above.</span
+      >
+    </div>
+    <div class="confirmation sans">
+      <p>
+        Thanks for signing up!<br />We'll be in touch.
+      </p>
+    </div>
+    <form
+      action="/"
+      name="email-signup"
+      data-netlify="true"
+      netlify-honeypot="bot-field"
+      id="data-form"
+      aria-hidden="true"
+    >
+      <input type="text" name="name" id="data-name" aria-hidden="true" />
+      <input type="text" name="about" id="data-about" aria-hidden="true" />
+      <input type="text" name="email" id="data-email" aria-hidden="true" />
+      <input name="bot-field" aria-hidden="true" />
+    </form>
+  </section>
+
+  <footer class="footer section sans">
+    <section class="footer-section">
+      <ul class="footer-logo-list">
+        <li class="footer-logo-item">
+          <svg viewBox="0 0 87 18" class="footer-logo">
+            <use href="#wordmark-sm-svg"></use>
+          </svg>
+        </li>
+        <li class="footer-logo-item">
+          <svg viewBox="0 0 144 100" class="footer-logo">
+            <use href="#dcg-full-svg"></use>
+          </svg>
+        </li>
+      </ul>
+    </section>
+    <section class="footer-section">
+      <ul class="footer-link-list">
+        <li><a href="https://uconn.edu/">UConn Home</a></li>
+        <li>
+          <a href="https://uconn.edu/disclaimers-privacy-copyright/"
+            >Disclaimers, Privacy, &amp; Copyright</a
+          >
+        </li>
+        <li><a href="https://accessibility.uconn.edu/">Accessibility</a></li>
+        <li><a href="https://uconn.edu/about-us/">About UConn</a></li>
+        <li><a href="https://uconn.edu/az/">A&ndash;Z Index</a></li>
+        <li class="copyright">
+          © <span id="year"></span>
+          <a href="https://uconn.edu" target="_blank" rel="noopener noreferrer"
+            >University of Connecticut</a
+          >
+        </li>
+      </ul>
+    </section>
+  </footer>
+</div>
+
+<script>
+  import { microSite } from "../scripts/index";
+  microSite();
+</script>
